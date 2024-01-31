@@ -8,6 +8,8 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Hero from './pages/Hero'
 import { UserContextProvider } from './components/UserContext'
+import CreatePost from './pages/CreatePost'
+import PostPage from './pages/PostPage'
 
 function App() {
 
@@ -17,9 +19,11 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
+            <Route path='/' element={<><Hero /></>} />
             <Route path='/login' element={<><Login /></>} />
             <Route path='/register' element={<><Register /></>} />
-            <Route path='/' element={<><Hero /></>} />
+            <Route path='/create' element={<><CreatePost /></>} />
+            <Route path='/post/:id' element={<><PostPage /></>} />
           </Routes>
         </BrowserRouter>
       </UserContextProvider>

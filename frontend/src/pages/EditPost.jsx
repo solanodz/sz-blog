@@ -1,6 +1,6 @@
 
 
-const EditPage = () => {
+const EditPost = () => {
     return (
         <div>
             {/* {userInfo && userInfo.id === postInfo.author._id && <Button><FaShare className='mx-2' />Edit</Button>} */}
@@ -28,4 +28,4 @@ const EditPage = () => {
     )
 }
 
-export default EditPage
+export default EditPost

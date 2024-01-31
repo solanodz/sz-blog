@@ -3,8 +3,9 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import { UserContext } from '@/components/UserContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Separator } from '@radix-ui/react-dropdown-menu';
 import { useContext, useState } from 'react'
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
 const Login = () => {
@@ -41,8 +42,8 @@ const Login = () => {
 
     return (
         <MaxWidthWrapper>
-            <form className="login" onSubmit={login}>
-                <h1>Login</h1>
+            <form onSubmit={login} className='max-w-lg mx-auto mt-20 text-center grid grid-flow-row gap-4'>
+                <h2 className='font-semibold text-3xl'>Login</h2>
                 <Input type="email"
                     placeholder="enter email"
                     value={email}
@@ -52,6 +53,8 @@ const Login = () => {
                     value={password}
                     onChange={ev => setPassword(ev.target.value)} />
                 <Button>Ingresar</Button>
+                <Separator className='border my-2' />
+                <p className='text-muted-foreground text-sm'>You don&apos;t have an account? <Link to={'/register'} className='text-black underline'>Click here</Link></p>
             </form>
         </MaxWidthWrapper>
     )

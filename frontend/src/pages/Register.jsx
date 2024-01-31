@@ -1,8 +1,9 @@
 import { UserContext } from '@/components/UserContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Separator } from '@radix-ui/react-dropdown-menu';
 import { useContext, useState } from 'react'
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const Register = () => {
 
@@ -36,8 +37,8 @@ const Register = () => {
     }
 
     return (
-        <form className="login" onSubmit={login}>
-            <h1>Register</h1>
+        <form onSubmit={login} className='max-w-lg mx-auto mt-20 text-center grid grid-flow-row gap-4'>
+            <h2 className='font-semibold text-3xl'>Register</h2>
             <Input type="text"
                 placeholder="username"
                 value={username}
@@ -51,6 +52,9 @@ const Register = () => {
                 value={password}
                 onChange={ev => setPassword(ev.target.value)} />
             <Button>Ingresar</Button>
+            <Separator className='border my-2' />
+            <p className='text-muted-foreground text-sm'>Already have an account? <Link to={'/login'} className='text-black underline'>Click here</Link></p>
+
         </form>
     )
 }
