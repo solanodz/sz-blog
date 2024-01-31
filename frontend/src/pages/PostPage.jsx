@@ -55,9 +55,9 @@ const PostPage = () => {
             <div className='max-w-4xl mx-auto'>
                 <div className='text-center my-8'>
                     <div className='my-6'>
-                        <h2 className=' text-3xl sm:text-5xl font-bold'>{postInfo.title}</h2>
+                        <h2 className=' text-3xl sm:text-4xl max-w-3xl mx-auto font-bold font-title '>{postInfo.title}</h2>
                         <time className='text-xs text-muted-foreground'>{format(new Date(postInfo.createdAt), 'MMM d, yyyy. HH:mm aaaa')}</time>
-                        <p className='text-sm sm:text-md text-muted-foreground'>Created by <span className='font-medium'>{postInfo.author ? postInfo.author.username : "Uknown author"}</span></p>
+                        <p className='text-sm sm:text-md text-gray-700'>Created by <span className='font-semibold'>{postInfo.author ? postInfo.author.username : "Uknown author"}</span></p>
                         {/* TODO -> fix date of creation */}
                         <div className='my-2 grid w-fit grid-flow-col mx-auto gap-2 '>
                             {userInfo && postInfo && userInfo.id === postInfo.author._id && (
@@ -91,25 +91,30 @@ const PostPage = () => {
                         alt=""
                         className='rounded-lg object-cover w-full h-56 shadow-lg mb-8'
                     />
+                    {/* TODO --> give functionality to each button */}
                     <div className='grid sm:mx-0 mx-auto gap-4 my-auto grid-flow-col w-fit text-3xl text-gray-700'>
                         <div className='flex m-1'>
-                            <GoHeart className='m-1' />
-                            <span className='text-xs font-medium text-muted-foreground p-1 bg-gray-200 leading-none h-fit rounded-full'>37</span>
+                            <Button variant='none' className='text-2xl p-0'>
+                                <GoHeart className='m-1' />
+                            </Button>
+                            <span className='text-xs text-muted-foreground font-bold leading-none h-fit rounded-full'>37</span>
                             {/* <GoHeartFill /> */}
                         </div>
                         <div className='flex m-1'>
-                            <GoComment className='m-1' />
-                            <span className='text-xs font-medium text-muted-foreground p-1 bg-gray-200 leading-none h-fit rounded-full'>37</span>
-                            {/* <GoHeartFill /> */}
+                            <Button variant='none' className='text-2xl p-0'>
+                                <GoComment className='m-1' />
+                            </Button>
+                            <span className='text-xs text-muted-foreground font-bold leading-none h-fit rounded-full'>37</span>
                         </div>
                         <div className='flex m-1'>
-                            <GoShare className='m-1' />
-                            <span className='text-xs font-medium text-muted-foreground p-1 bg-gray-200 leading-none h-fit rounded-full'>37</span>
-                            {/* <GoHeartFill /> */}
+                            <Button variant='none' className='text-2xl p-0'>
+                                <GoShare className='m-1' />
+                            </Button>
+                            <span className='text-xs text-muted-foreground font-bold leading-none h-fit rounded-full'>3</span>
                         </div>
                     </div>
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: postInfo.content }} />
+                <div className='my-8' dangerouslySetInnerHTML={{ __html: postInfo.content }} />
             </div>
         </MaxWidthWrapper >
     )

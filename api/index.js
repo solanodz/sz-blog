@@ -131,7 +131,7 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
         const { title, summary, content } = req.body;
         const postDoc = await PostModel.create({
             title,
-            summary,
+            // summary,
             content,
             cover: newPath,
             author: info.id,

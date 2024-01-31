@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import { Separator } from '@radix-ui/react-dropdown-menu';
 import { format } from 'date-fns'
 import { useEffect } from 'react';
 import { Link } from "react-router-dom"
@@ -19,12 +20,14 @@ const Post = ({ _id, author, title, summary, cover, content, createdAt }) => {
                         className=" rounded-lg object-cover w-full h-48"
                     />
                 </Link>
-                <div className="p-2 h-32">
-                    <Link to={`/post/${_id}`} className="text-xl md:text-2xl font-bold">{title}</Link>
-                    <p className="text-sm">{summary}</p>
+                <div className="p-2 my-auto items-center h-30 sm:h-40">
+                    <Link to={`/post/${_id}`} className="text-xl md:text-lg tracking-tight font-bold">{title.length > 120 ? (title.substr(0, 120)) + '...' : title}</Link>
+                    {/* <p className="text-sm my-2 text-muted-foreground">{summary.length > 200 ? (summary.substr(0, 200)) + '...' : summary}</p> */}
                 </div>
-                <div className="text-muted-foreground text-xs">
-                    <p>Created by <span className='font-medium'>{author ? author.username : "Uknown author"}</span></p>
+                <Separator className="my-2 border" />
+
+                <div className="text-gray-700 text-xs">
+                    <p>Created by <span className='font-semibold'>{author ? author.username : "Uknown author"}</span></p>
                     <time>{format(new Date(createdAt), 'MMM d, yyyy. HH:mm aaaa')}</time>
                 </div>
             </div>

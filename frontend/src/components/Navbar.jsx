@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from "react-router-dom"
 import MaxWidthWrapper from "./MaxWidthWrapper"
-import { buttonVariants } from "./ui/button"
-import { useContext, useEffect } from "react"
+import { Button, buttonVariants } from "./ui/button"
+import { useContext, useEffect, useState } from "react"
 import { UserContext } from "./UserContext"
-import szLogo from '../assets/sz-negro.png'
+import ChatSheet from "./ChatSheet"
 
 import {
     DropdownMenu,
@@ -17,6 +17,8 @@ import {
 
 
 const Navbar = () => {
+
+    // const [isChatOpen, setIsChatOpen] = useState(false);
 
     const { setUserInfo, userInfo } = useContext(UserContext);
     useEffect(() => {
@@ -38,18 +40,28 @@ const Navbar = () => {
     }
 
     const username = userInfo?.email;
-    console.log(username);
 
+    /* const openChat = () => {
+        setIsChatOpen(true);
+    };
+
+    const closeChat = () => {
+        setIsChatOpen(false);
+    }; */
 
     return (
         <MaxWidthWrapper className='hidden md:block'>
             <nav className="flex items-center justify-between py-3 border-b border-gray-200">
                 <Link to={'/'}>
-                    <img src={szLogo} alt="" className="h-12" />
+                    {/* <img src={szLogo} alt="" className="h-12" /> */}
+                    <span className="font-title font-black italic text-3xl tracking-tighter">GGG</span>
                 </Link>
-                <div className="grid grid-flow-col gap-3 ">
+
+
+                <div className="grid grid-flow-col gap-5 ">
                     {username && (
                         <>
+                            {/* <ChatSheet onOpen={openChat} onClose={closeChat} /> */}
                             <Link className={buttonVariants({ variant: 'default' })} to="/create">Create new post</Link>
                             <DropdownMenu>
                                 <DropdownMenuTrigger className={buttonVariants({ variant: 'outline' })}>Account</DropdownMenuTrigger>
@@ -60,8 +72,6 @@ const Navbar = () => {
                                     <DropdownMenuItem className="cursor-pointer hover:bg-gray-200"><a onClick={logout}>Logout</a></DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
-
-
                         </>
                     )}
                     {!username && (

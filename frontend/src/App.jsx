@@ -14,7 +14,7 @@ import PostPage from './pages/PostPage'
 function App() {
 
   return (
-    <div>
+    <div className='font-sans'>
       <UserContextProvider>
         <BrowserRouter>
           <Navbar />
