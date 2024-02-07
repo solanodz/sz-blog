@@ -10,11 +10,19 @@ import Hero from './pages/Hero'
 import { UserContextProvider } from './components/UserContext'
 import CreatePost from './pages/CreatePost'
 import PostPage from './pages/PostPage'
+import { Toaster } from 'sonner'
+import MyAccount from './pages/MyAccount'
+import AllPosts from './pages/AllPosts'
 
 function App() {
 
   return (
     <div className='font-sans'>
+      <Toaster
+        position='top-center'
+        reverseOrder={false}
+
+      />
       <UserContextProvider>
         <BrowserRouter>
           <Navbar />
@@ -24,6 +32,8 @@ function App() {
             <Route path='/register' element={<><Register /></>} />
             <Route path='/create' element={<><CreatePost /></>} />
             <Route path='/post/:id' element={<><PostPage /></>} />
+            <Route path='/my-account' element={<><MyAccount /></>} />
+            <Route path='/all-posts' element={<><AllPosts /></>} />
           </Routes>
         </BrowserRouter>
       </UserContextProvider>

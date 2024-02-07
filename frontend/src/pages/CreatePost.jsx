@@ -5,6 +5,7 @@ import { useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { Navigate } from 'react-router-dom'
+import { toast } from 'sonner'
 
 const CreatePost = () => {
 
@@ -48,9 +49,9 @@ const CreatePost = () => {
         })
 
         if (response.ok) {
+            toast.success('Post created successfully');
             setRedirect(true);
         }
-
     }
 
     if (redirect) {

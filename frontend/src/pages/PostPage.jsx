@@ -16,6 +16,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import { toast } from 'sonner';
 
 const PostPage = () => {
 
@@ -43,6 +44,7 @@ const PostPage = () => {
             credentials: 'include',
         })
         if (response.ok) {
+            toast.success('Post deleted successfully');
             setRedirect(true);
         }
     }
@@ -55,7 +57,7 @@ const PostPage = () => {
             <div className='max-w-4xl mx-auto'>
                 <div className='text-center my-8'>
                     <div className='my-6'>
-                        <h2 className=' text-3xl sm:text-4xl max-w-3xl mx-auto font-bold font-title '>{postInfo.title}</h2>
+                        <h2 className=' text-3xl sm:text-4xl max-w-3xl mx-auto font-bold font-title tracking-tight'>{postInfo.title}</h2>
                         <time className='text-xs text-muted-foreground'>{format(new Date(postInfo.createdAt), 'MMM d, yyyy. HH:mm aaaa')}</time>
                         <p className='text-sm sm:text-md text-gray-700'>Created by <span className='font-semibold'>{postInfo.author ? postInfo.author.username : "Uknown author"}</span></p>
                         {/* TODO -> fix date of creation */}

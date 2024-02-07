@@ -17,16 +17,19 @@ const Login = () => {
 
     async function login(ev) {
         ev.preventDefault();
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch('http://localhost:8080/sessions/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
         });
         if (response.ok) {
-            setRedirect(true);
-            toast.success('Inicio de sesión exitoso.');
-            setTimeout(refreshPage, 100); // Refresh the page after 1 second
+            response.json().then(userInfo => {
+                setUserInfo(userInfo);
+                setRedirect(true);
+                setTimeout(refreshPage); // Refresh the page after 1 second
+
+            });
         } else {
             toast.error('Credenciales incorrectas')
         }
@@ -43,6 +46,7 @@ const Login = () => {
     return (
         <MaxWidthWrapper>
             <form onSubmit={login} className='max-w-lg mx-auto mt-20 text-center grid grid-flow-row gap-4'>
+                <p className='text-5xl font-black font-title italic tracking-tighter drop-shadow-xl'>GGG</p>
                 <h2 className='font-semibold text-3xl'>Login</h2>
                 <Input type="email"
                     placeholder="enter email"
