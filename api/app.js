@@ -7,7 +7,8 @@ import cookieParser from 'cookie-parser'
 import multer from 'multer'
 import fs from 'fs'
 
-import('dotenv/config.js');
+import dotenv from 'dotenv';
+dotenv.config();
 
 import { fileURLToPath } from 'url';
 import path from 'path';
