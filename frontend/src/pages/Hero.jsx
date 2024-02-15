@@ -24,8 +24,13 @@ const Hero = () => {
         });
     }, []);
 
+    // this should show only 4 posts
     useEffect(() => {
         fetch('http://localhost:8080/post', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
         }).then(response => {
             response.json().then(posts => {
                 setPosts(posts);
@@ -63,7 +68,7 @@ const Hero = () => {
                 </div>
                 <div className="flex justify-center container mx-auto p-0">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {posts.length > 0 && posts.map(post => (
+                        {posts.length > 0 && posts.slice(0, 4).map(post => (
                             <Post {...post} key={post._id} />
                         ))}
                     </div>

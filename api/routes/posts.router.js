@@ -76,12 +76,22 @@ router.put('/post', uploadMiddleware.single('file'), async (req, res) => {
 })
 
 router.get('/post', async (req, res) => {
-    res.json(await PostModel.find()
+    const search = req.query.search;
+    const query = {
+        $or: [
+            { title: { $regex: search, $options: 'i' } },
+            { 'author.username': { $regex: search, $options: 'i' } }
+        ]
+    };
+    // TERMINAR EL SEARCH INPUT
+    console.log(`Executing query: ${JSON.stringify(query)}`);
+    const posts = await PostModel.find(query)
         .populate('author', ['username'])
         .sort({ createdAt: -1 })
-        .limit(4)
-    )
-})
+        .limit(4);
+    console.log(`Query result: ${JSON.stringify(posts)}`);
+    res.json(posts);
+});
 
 router.get('/all-posts', async (req, res) => {
     res.json(await PostModel.find()

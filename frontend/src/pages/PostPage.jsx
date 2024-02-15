@@ -1,7 +1,7 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { useContext, useEffect, useState } from 'react'
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { FaTrashCan, } from 'react-icons/fa6'
 import { GoComment, GoHeart, GoShare } from "react-icons/go";
 import { FaPencilAlt } from "react-icons/fa";
@@ -18,13 +18,23 @@ import {
 } from "@/components/ui/dialog"
 import { toast } from 'sonner';
 
+
 const PostPage = () => {
 
     const [postInfo, setPostInfo] = useState(null)
-    const { userInfo } = useContext(UserContext)
     const { id } = useParams();
     const [redirect, setRedirect] = useState(false);
+    const { setUserInfo, userInfo } = useContext(UserContext);
 
+    useEffect(() => {
+        fetch('http://localhost:8080/profile', {
+            credentials: 'include',
+        }).then(response => {
+            response.json().then(userInfo => {
+                setUserInfo(userInfo);
+            });
+        });
+    }, []);
 
     useEffect(() => {
 
@@ -53,7 +63,7 @@ const PostPage = () => {
     if (redirect) return <Navigate to='/' />
 
     return (
-        <MaxWidthWrapper>
+        <MaxWidthWrapper className='flex sm:flex-row flex-col'>
             <div className='max-w-4xl mx-auto'>
                 <div className='text-center my-8'>
                     <div className='my-6'>
@@ -80,8 +90,7 @@ const PostPage = () => {
                                             </DialogFooter>
                                         </DialogContent>
                                     </Dialog>
-
-                                    <Button size='sm' variant='outline'><FaPencilAlt className='mr-2' />Edit</Button>
+                                    <Link to={`/edit-post/${postInfo._id}`} size='sm' className={buttonVariants({ variant: 'outline' })}><FaPencilAlt className='mr-2' />Edit</Link>
                                 </>
                             )}
                         </div>

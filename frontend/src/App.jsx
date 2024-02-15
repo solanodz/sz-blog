@@ -13,6 +13,7 @@ import PostPage from './pages/PostPage'
 import { Toaster } from 'sonner'
 import MyAccount from './pages/MyAccount'
 import AllPosts from './pages/AllPosts'
+import EditPost from './pages/EditPost'
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
             <Route path='/post/:id' element={<><PostPage /></>} />
             <Route path='/my-account' element={<><MyAccount /></>} />
             <Route path='/all-posts' element={<><AllPosts /></>} />
+            <Route path='/edit-post/:id' element={<><EditPost /></>} />
           </Routes>
         </BrowserRouter>
       </UserContextProvider>
