@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec \"node -r dotenv/config\" .",
+    "dev": "nodemon --exec \"node -r dotenv\" .",
     "start": "node -r dotenv/config ."
   },
   "author": "",
