@@ -1,13 +1,12 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper"
-import { Input } from "@/components/ui/Input"
+import { Input } from "@/components/ui/input"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import ReactQuill from "react-quill"
+// import ReactQuill from "react-quill"
 import { Navigate, useParams } from "react-router-dom"
+import { Textarea } from "@/components/ui/textarea"
 
-
-
-const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080';
 
 const EditPost = () => {
     const { id } = useParams();
@@ -18,7 +17,7 @@ const EditPost = () => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        fetch(`${URL}post/` + id)
+        fetch(`http://localhost:8080/post/` + id)
             .then(response => {
                 response.json().then(postInfo => {
                     setTitle(postInfo.title);
@@ -38,7 +37,7 @@ const EditPost = () => {
         if (files?.[0]) {
             data.set('file', files?.[0]);
         }
-        const response = await fetch(`${URL}post`, {
+        const response = await fetch(`http://localhost:8080/post`, {
             method: 'PUT',
             body: data,
             credentials: 'include',
@@ -74,7 +73,7 @@ const EditPost = () => {
                     placeholder='Image'
                     onChange={e => setFiles(e.target.files)}
                 />
-                <ReactQuill onChange={setContent} value={content} />
+                <Textarea placeholder='Content' value={content} onChange={e => setContent(e.target.value)} />
                 <Button className="my-12" type="submit">Confirm changes</Button>
             </form>
         </MaxWidthWrapper>

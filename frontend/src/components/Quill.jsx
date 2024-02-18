@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import ReactQuill from 'react-quill'
 
 const Quill = ({ value, onChange }) => {

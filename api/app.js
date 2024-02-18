@@ -14,7 +14,8 @@ import path from 'path';
 
 initMongoDB()
 const app = express()
-app.use(cors({ credentials: true, origin: ['http://localhost:5173', 'https://backend-blogggers.onrender.com'] }))
+app.use(cors({ credentials: true, origin: ['http://localhost:5173', 'https://backend-blogggers.onrender.com/'] }))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -35,7 +36,6 @@ import oauthRouter from './routes/auth.router.js'
 app.use('/', postsRouter, usersRouter)
 app.use('/sessions', sessionsRouter)
 app.use('/auth', oauthRouter)
-
 
 
 app.get('/profile', (req, res) => {

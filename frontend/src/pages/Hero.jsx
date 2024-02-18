@@ -9,18 +9,14 @@ import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 
-const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
-
 const Hero = () => {
 
     const [posts, setPosts] = useState([]);
     const { setUserInfo, userInfo } = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`${URL}profile`, {
-            method: 'POST',
+        fetch('http://localhost:8080/profile', {
             credentials: 'include',
-
         }).then(response => {
             response.json().then(userInfo => {
                 setUserInfo(userInfo);
@@ -30,7 +26,7 @@ const Hero = () => {
 
     // this should show only 4 posts
     useEffect(() => {
-        fetch(`${URL}post`, {
+        fetch('http://localhost:8080/post', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +45,7 @@ const Hero = () => {
             <MaxWidthWrapper className='mt-20'>
                 <div className="max-w-3xl text-center mx-auto ">
                     <h1 className='font-title italic font-medium tracking-tight text-5xl drop-shadow-lg'>Welcome to BLO<span className="text-black font-black tracking-tighter">GGG</span>ERS</h1>
-                    <p className="text-muted-foreground max-w-lg mx-auto italic font-title text-sm my-1 font-regular">community of people seeking self improvement. Create your account and start writing <span className="font-semibold underline">for free.</span></p>
+                    <p className="text-muted-foreground max-w-lg leading-tight mx-auto italic font-title text-sm my-1 font-regular">community of people who likes to write and share their thoughts about anything. Create your account and start writing <span className="font-semibold underline">for free.</span></p>
                 </div>
                 <div className=" w-fit mx-auto my-6">
                     {username && (

@@ -9,6 +9,7 @@ export default {
     secure: process.env.SECURE,
     emailPort: process.env.EMAIL_PORT,
     frontendUrl: process.env.FRONTEND_URL,
+    backendUrl: process.env.BACKEND_URL,
     googleClientId: process.env.CLIENT_ID,
     googleClientSecret: process.env.CLIENT_SECRET,
 }

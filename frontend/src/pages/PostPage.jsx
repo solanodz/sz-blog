@@ -19,8 +19,6 @@ import {
 import { toast } from 'sonner';
 
 
-const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
-
 const PostPage = () => {
 
     const [postInfo, setPostInfo] = useState(null)
@@ -29,8 +27,9 @@ const PostPage = () => {
     const { setUserInfo, userInfo } = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`${URL}profile`, {
+        fetch('http://localhost:8080/profile', {
             credentials: 'include',
+
         }).then(response => {
             response.json().then(userInfo => {
                 setUserInfo(userInfo);
@@ -40,8 +39,9 @@ const PostPage = () => {
 
     useEffect(() => {
 
-        fetch(`${URL}post/${id}`, {
+        fetch(`http://localhost:8080/post/${id}`, {
             credentials: 'include',
+
         })
             .then(response => {
                 response.json().then(postInfo => {
@@ -51,7 +51,7 @@ const PostPage = () => {
     }, [])
 
     const handleDelete = async () => {
-        const response = await fetch(`${URL}post/${id}`, {
+        const response = await fetch(`http://localhost:8080/post/${id}`, {
             method: 'DELETE',
             credentials: 'include',
         })
@@ -63,6 +63,9 @@ const PostPage = () => {
 
     if (!postInfo) return '';
     if (redirect) return <Navigate to='/' />
+
+    console.log('userInfo:', userInfo);
+    console.log('postInfo:', postInfo);
 
     return (
         <MaxWidthWrapper className='flex sm:flex-row flex-col'>

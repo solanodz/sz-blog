@@ -1,14 +1,13 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import Quill from '@/components/Quill'
+// import Quill from '@/components/Quill'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { useState } from 'react'
-import 'react-quill/dist/quill.snow.css'
 import { Navigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
 
-const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
 
 const CreatePost = () => {
 
@@ -26,7 +25,7 @@ const CreatePost = () => {
         data.set('file', files[0]);
         e.preventDefault();
 
-        const response = await fetch(`${URL}post`, {
+        const response = await fetch(`http://localhost:8080/post`, {
             method: 'POST',
             body: data,
             credentials: 'include',
@@ -64,7 +63,8 @@ const CreatePost = () => {
                     placeholder='Image'
                     onChange={e => setFiles(e.target.files)}
                 />
-                <Quill value={content} onChange={setContent} />
+
+                <Textarea placeholder='Content' value={content} onChange={e => setContent(e.target.value)} />
                 <Button className="my-12" type="submit">Create Post</Button>
             </form>
         </MaxWidthWrapper>

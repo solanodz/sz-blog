@@ -1,13 +1,12 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import Post from '@/components/Post';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import { UserContext } from '@/components/UserContext';
 import { Button } from '@/components/ui/button';
 import { useContext, useEffect, useState } from 'react';
 
-
-const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080';
 
 function MyAccount({ userId }) {
 
@@ -15,7 +14,7 @@ function MyAccount({ userId }) {
 
     const { setUserInfo, userInfo } = useContext(UserContext);
     useEffect(() => {
-        fetch(`${URL}profile`, {
+        fetch(`http://localhost:8080/profile`, {
             credentials: 'include',
         }).then(response => {
             response.json().then(userInfo => {
@@ -25,7 +24,7 @@ function MyAccount({ userId }) {
     }, []);
 
     useEffect(() => {
-        fetch(`${URL}post`, {
+        fetch(`http://localhost:8080/post`, {
             credentials: 'include',
             method: 'GET',
             headers: {
