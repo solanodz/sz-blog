@@ -14,6 +14,7 @@ import { Toaster } from 'sonner'
 import MyAccount from './pages/MyAccount'
 import AllPosts from './pages/AllPosts'
 import EditPost from './pages/EditPost'
+import EmailVerify from './pages/EmailVerify'
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
             <Route path='/my-account' element={<><MyAccount /></>} />
             <Route path='/all-posts' element={<><AllPosts /></>} />
             <Route path='/edit-post/:id' element={<><EditPost /></>} />
+            <Route path='/users/:id/verify/:token' element={<><EmailVerify /></>} />
           </Routes>
         </BrowserRouter>
       </UserContextProvider>

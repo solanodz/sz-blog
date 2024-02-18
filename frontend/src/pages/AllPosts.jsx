@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import Post from '@/components/Post';
 import { Button } from '@/components/ui/button';

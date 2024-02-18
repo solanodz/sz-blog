@@ -30,9 +30,12 @@ const PORT = config.port
 import postsRouter from './routes/posts.router.js'
 import sessionsRouter from './routes/sessions.router.js'
 import usersRouter from './routes/users.router.js'
+import oauthRouter from './routes/auth.router.js'
 
 app.use('/', postsRouter, usersRouter)
 app.use('/sessions', sessionsRouter)
+app.use('/auth', oauthRouter)
+
 
 
 app.get('/profile', (req, res) => {

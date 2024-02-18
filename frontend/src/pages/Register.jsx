@@ -31,7 +31,7 @@ const Register = () => {
 
             });
         } else {
-            alert('wrong credentials');
+            toast.error('wrong credentials');
         }
     }
 
