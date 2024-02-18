@@ -14,7 +14,7 @@ import path from 'path';
 
 initMongoDB()
 const app = express()
-app.use(cors({ credentials: true, origin: 'http://localhost:5173' }))
+app.use(cors({ credentials: true, origin: ['http://localhost:5173', 'https://backend-blogggers.onrender.com'] }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
