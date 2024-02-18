@@ -2,6 +2,9 @@ import { buttonVariants } from '@/components/ui/button';
 import { Fragment, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 
+
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
+
 const EmailVerify = () => {
 
     const [validUrl, setValidUrl] = useState(false);
@@ -10,7 +13,7 @@ const EmailVerify = () => {
     useEffect(() => {
         const verifyEmail = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/sessions/${params.id}/verify/${params.token}`, {
+                const response = await fetch(`${URL}sessions/${params.id}/verify/${params.token}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     credentials: 'include',

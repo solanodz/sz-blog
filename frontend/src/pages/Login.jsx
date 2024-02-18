@@ -8,6 +8,9 @@ import { useContext, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
+
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
+
 const Login = () => {
 
     const [email, setEmail] = useState('');
@@ -17,7 +20,7 @@ const Login = () => {
 
     async function login(ev) {
         ev.preventDefault();
-        const response = await fetch('http://localhost:8080/sessions/login', {
+        const response = await fetch(`${URL}sessions/login`, {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },

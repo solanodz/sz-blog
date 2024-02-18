@@ -7,6 +7,9 @@ import 'react-quill/dist/quill.snow.css'
 import { Navigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
+
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
+
 const CreatePost = () => {
 
     const [title, setTitle] = useState('')
@@ -23,7 +26,7 @@ const CreatePost = () => {
         data.set('file', files[0]);
         e.preventDefault();
 
-        const response = await fetch('http://localhost:8080/post', {
+        const response = await fetch(`${URL}post`, {
             method: 'POST',
             body: data,
             credentials: 'include',

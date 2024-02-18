@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input';
 import { useEffect, useState } from 'react'
 import { DatePickerDemo } from '@/components/DatePickerDemo';
 
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
+
 const AllPosts = () => {
     const [posts, setPosts] = useState([]);
     const [search, setSearch] = useState('');
@@ -17,7 +19,7 @@ const AllPosts = () => {
     };
 
     useEffect(() => {
-        console.log(`Sending request to: http://localhost:8080/post?search=${search}`);
+        console.log(`Sending request to: ${URL}post?search=${search}`);
         fetch(`http://localhost:8080/post?search=${search}`, {
             method: 'GET',
             headers: {

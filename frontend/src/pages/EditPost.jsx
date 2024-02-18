@@ -6,6 +6,9 @@ import ReactQuill from "react-quill"
 import { Navigate, useParams } from "react-router-dom"
 
 
+
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
+
 const EditPost = () => {
     const { id } = useParams();
     const [title, setTitle] = useState('');
@@ -15,7 +18,7 @@ const EditPost = () => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:8080/post/' + id)
+        fetch(`${URL}post/` + id)
             .then(response => {
                 response.json().then(postInfo => {
                     setTitle(postInfo.title);
@@ -35,7 +38,7 @@ const EditPost = () => {
         if (files?.[0]) {
             data.set('file', files?.[0]);
         }
-        const response = await fetch('http://localhost:8080/post', {
+        const response = await fetch(`${URL}post`, {
             method: 'PUT',
             body: data,
             credentials: 'include',
