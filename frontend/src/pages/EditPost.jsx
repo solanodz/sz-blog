@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Navigate, useParams } from "react-router-dom"
 import { Textarea } from "@/components/ui/textarea"
 
-const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080';
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
 
 const EditPost = () => {
     const { id } = useParams();

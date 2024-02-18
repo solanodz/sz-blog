@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react"
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
 
 const Hero = () => {
 
@@ -15,7 +16,7 @@ const Hero = () => {
     const { setUserInfo, userInfo } = useContext(UserContext);
 
     useEffect(() => {
-        fetch('http://localhost:8080/profile', {
+        fetch(`${URL}profile`, {
             credentials: 'include',
         }).then(response => {
             response.json().then(userInfo => {
@@ -26,7 +27,7 @@ const Hero = () => {
 
     // this should show only 4 posts
     useEffect(() => {
-        fetch('http://localhost:8080/post', {
+        fetch(`${URL}post`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

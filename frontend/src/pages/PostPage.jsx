@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dialog"
 import { toast } from 'sonner';
 
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080/';
 
 const PostPage = () => {
 
@@ -27,7 +28,7 @@ const PostPage = () => {
     const { setUserInfo, userInfo } = useContext(UserContext);
 
     useEffect(() => {
-        fetch('http://localhost:8080/profile', {
+        fetch(`${URL}profile`, {
             credentials: 'include',
 
         }).then(response => {
@@ -39,7 +40,7 @@ const PostPage = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:8080/post/${id}`, {
+        fetch(`${URL}post/${id}`, {
             credentials: 'include',
 
         })
@@ -51,7 +52,7 @@ const PostPage = () => {
     }, [])
 
     const handleDelete = async () => {
-        const response = await fetch(`http://localhost:8080/post/${id}`, {
+        const response = await fetch(`${URL}post/${id}`, {
             method: 'DELETE',
             credentials: 'include',
         })
