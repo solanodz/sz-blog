@@ -64,7 +64,7 @@ const PostPage = () => {
 
     return (
         <MaxWidthWrapper className='flex sm:flex-row flex-col'>
-            <div className='max-w-4xl mx-auto'>
+            <div className='max-w-3xl mx-auto'>
                 <div className='text-center my-8'>
                     <div className='my-6'>
                         <h2 className=' text-3xl sm:text-4xl max-w-3xl mx-auto font-bold font-title tracking-tight'>{postInfo.title}</h2>

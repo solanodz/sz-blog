@@ -6,13 +6,10 @@ import { init as initMongoDB } from './db/mongo.js'
 import cookieParser from 'cookie-parser'
 import multer from 'multer'
 import fs from 'fs'
-
-import { config } from 'dotenv'
-config()
+import config from './config/config.js'
 
 import { fileURLToPath } from 'url';
 import path from 'path';
-import config from './config/config.js'
 
 initMongoDB()
 const app = express()
